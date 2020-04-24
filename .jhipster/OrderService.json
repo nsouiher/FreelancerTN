@@ -1,0 +1,50 @@
+{
+    "name": "OrderService",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "orderServiceHistory",
+            "otherEntityRelationshipName": "orderService",
+            "relationshipName": "orderServiceHistory"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "order",
+            "otherEntityRelationshipName": "orderService",
+            "relationshipName": "order",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "serviceInventory",
+            "otherEntityRelationshipName": "orderService",
+            "relationshipName": "serviceInventory",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200424234600",
+    "entityTableName": "order_service",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
