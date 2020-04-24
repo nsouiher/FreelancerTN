@@ -1,0 +1,39 @@
+{
+    "name": "Invoice",
+    "fields": [
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "invoiceHistory",
+            "otherEntityRelationshipName": "invoice",
+            "relationshipName": "invoiceHistory"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "creditCard",
+            "otherEntityRelationshipName": "invoice",
+            "relationshipName": "creditCard",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200424235400",
+    "entityTableName": "invoice",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
