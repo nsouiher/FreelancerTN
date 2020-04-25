@@ -1,0 +1,138 @@
+
+
+entity CustomerAccount {
+	createdAt Instant,
+    updatedAt Instant
+}
+
+entity SystemManager {
+	role String
+}
+
+entity Adress {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity OrderEntity {
+    createdAt Instant,
+    updatedAt Instant
+}
+
+
+entity ServiceInventory {
+	price Integer,
+    createdAt Instant,
+    updatedAt Instant,
+	description String
+}
+
+entity OrderService {
+	quantity Integer,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity OrderServiceHistory {
+	amount Integer,
+    state String,
+    note String,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity ServiceDetail {
+	title String,
+    content String,
+    rating Integer,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity Category {
+	name String,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity Comment {
+	content String,
+    rating Integer,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity Media {
+	url String,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity Payment {
+	amount Float,
+    state String,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity CreditCard {
+	ccNumber Double,
+    holderName String,
+    expireDate Instant,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity Invoice {
+    createdAt Instant,
+    updatedAt Instant
+}
+
+entity InvoiceHistory {
+	state Integer,
+    createdAt Instant,
+    updatedAt Instant
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	CustomerAccount to OrderEntity{customer},
+	OrderEntity to OrderService{order},
+    ServiceInventory to OrderService{serviceInventory},
+    ServiceInventory to Media{serviceInventory},
+    OrderService to OrderServiceHistory{orderService},
+    CreditCard to Payment {creditCard},
+    CreditCard to Invoice {creditCard},
+    Invoice to InvoiceHistory{invoice},
+	Payment to OrderEntity {payment},
+    CustomerAccount to Comment {customerAccount},
+    ServiceDetail to Comment{serviceDetail},
+    ServiceDetail to Category{serviceDetail}
+}
+
+relationship ManyToOne {
+	OrderEntity{customerAccount} to CustomerAccount
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+ 	CustomerAccount {customerAccount} to Adress ,
+    CustomerAccount {user} to User ,
+    SystemManager {user} to User ,
+    ServiceDetail{serviceInventory} to ServiceInventory
+}
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+filter *
+// Set an angular suffix
+// angularSuffix * with mySuffix

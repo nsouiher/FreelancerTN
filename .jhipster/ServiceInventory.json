@@ -1,0 +1,46 @@
+{
+    "name": "ServiceInventory",
+    "fields": [
+        {
+            "fieldName": "price",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "orderService",
+            "otherEntityRelationshipName": "serviceInventory",
+            "relationshipName": "orderService"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "media",
+            "otherEntityRelationshipName": "serviceInventory",
+            "relationshipName": "media"
+        }
+    ],
+    "changelogDate": "20200425151600",
+    "entityTableName": "service_inventory",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

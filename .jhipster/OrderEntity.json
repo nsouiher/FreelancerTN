@@ -1,0 +1,53 @@
+{
+    "name": "OrderEntity",
+    "fields": [
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "orderService",
+            "otherEntityRelationshipName": "order",
+            "relationshipName": "orderService"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customerAccount",
+            "otherEntityRelationshipName": "orderEntity",
+            "relationshipName": "customerAccount",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customerAccount",
+            "otherEntityRelationshipName": "orderEntity",
+            "relationshipName": "customer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "orderEntity",
+            "relationshipName": "payment",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200425151500",
+    "entityTableName": "order_entity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
