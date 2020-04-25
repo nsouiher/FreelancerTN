@@ -1,0 +1,50 @@
+{
+    "name": "CreditCard",
+    "fields": [
+        {
+            "fieldName": "ccNumber",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "holderName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expireDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "creditCard",
+            "relationshipName": "payment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "invoice",
+            "otherEntityRelationshipName": "creditCard",
+            "relationshipName": "invoice"
+        }
+    ],
+    "changelogDate": "20200425152400",
+    "entityTableName": "credit_card",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
